@@ -1,0 +1,23 @@
+{
+  "name": "nzta/gallery",
+  "description": "A module for creating a gallery of images with captions",
+  "type": "silverstripe-module",
+  "homepage": "https://github.com/NZTA/gallery",
+  "keywords": [
+    "silverstripe",
+    "image",
+    "gallery",
+    "cms"
+  ],
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/NZTA/gallery/issues"
+  },
+  "require": {
+    "silverstripe/framework": "~3.4",
+    "silverstripe/cms": "~3.4",
+  },
+  "require-dev": {
+    "phpunit/PHPUnit": "~3.7"
+  }
+}

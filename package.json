@@ -1,0 +1,22 @@
+{
+  "name": "silverstripe-gallery",
+  "version": "1.0.0",
+  "description": "Provides the ability add a Gallery of images with captions on a page",
+  "engines": {
+    "node": "7.9.0",
+    "npm": "4.2.0"
+  },
+  "main": "src/index.jsx",
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "laravel-mix": "^1.4.2"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
