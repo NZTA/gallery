@@ -25,7 +25,7 @@ The master branch of this module is currently aiming for SilverStripe 4.x compat
 You will need to require in the `Requirements::javascript('nzta/gallery: js/gallery.js')` in order to display the gallery out of the box and 
 have the lightbox functionality.
 
-There is also a `vendor/nzta/gallery/css/main.css` file that can be used to display basic styles for the `CarouselModal`.
+There is also a `Requirements::css('nzta/gallery: css/main.css)` file that can be used to display basic styles for the `CarouselModal`.
 
 ### Setting up templates
 
