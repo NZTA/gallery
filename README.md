@@ -2,6 +2,9 @@
 
 Provides the ability add a Gallery to any number of page types to provide a gallery of images with captions
 
+## Requirements
+SilverStripe 3.x
+
 ## Features
 
 * Able to create a set of GalleryItems that each consist of an image and a caption
