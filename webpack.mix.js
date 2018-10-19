@@ -1,11 +1,11 @@
 let mix = require('laravel-mix');
 
 mix.react(
-  'src/js/index.jsx',
-  'javascript/gallery.js'
+  'client/js/index.jsx',
+  'js/gallery.js'
 );
 
-mix.sass('src/scss/main.scss', 'css', {
+mix.sass('client/scss/main.scss', 'css', {
   includePaths: ['node_modules/']
 });
 

@@ -1,5 +1,17 @@
 <?php
 
+namespace NZTA\Gallery\Extensions;
+
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\DataExtension;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+use NZTA\Gallery\Model\GalleryItem;
+
 class GalleryExtension extends DataExtension
 {
 
@@ -22,7 +34,7 @@ class GalleryExtension extends DataExtension
      * @var array
      */
     private static $has_many = [
-        'GalleryItems' => 'GalleryItem'
+        'GalleryItems' => GalleryItem::class
     ];
 
     /**
@@ -38,7 +50,7 @@ class GalleryExtension extends DataExtension
      */
     public function updateCMSFields(FieldList $fields)
     {
-        $allowedPages = Config::inst()->get('GalleryExtension', 'pages_allowed_gallery');
+        $allowedPages = Config::inst()->get(GalleryExtension::class, 'pages_allowed_gallery');
 
         if (count($allowedPages) == 0 || in_array($this->owner->ClassName, $allowedPages)) {
             $fields->addFieldsToTab(
@@ -53,7 +65,7 @@ class GalleryExtension extends DataExtension
                         'Gallery Items',
                         $this->owner->GalleryItems()->sort('SortOrder'),
                         GridFieldConfig_RecordEditor::create()
-                            ->addComponent(new GridFieldSortableRows('SortOrder'))
+                            ->addComponent(new GridFieldOrderableRows('SortOrder'))
                     )
                     ->setDescription('This is the list of Gallery Items to be displayed on the page')
                 ]
@@ -85,7 +97,7 @@ class GalleryExtension extends DataExtension
             $hasImage = ($item->ImageID != 0 && $item->Image()->exists());
 
             if ($hasImage) {
-                $captionLength = Config::inst()->get('GalleryExtension', 'thumbnail_caption_length');
+                $captionLength = Config::inst()->get(GalleryExtension::class, 'thumbnail_caption_length');
 
                 $data[] = [
                     'id' => $item->ID,

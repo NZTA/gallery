@@ -1,8 +1,14 @@
 <?php
 
+namespace NZTA\Gallery\Test;
+
+use SilverStripe\Dev\SapphireTest;
+use NZTA\Gallery\Extensions\GalleryExtension;
+use Page;
+use NZTA\Gallery\Model\GalleryItem;
+
 class GalleryExtensionTest extends SapphireTest
 {
-
     /**
      * @var boolean
      */
@@ -12,8 +18,8 @@ class GalleryExtensionTest extends SapphireTest
      * @var array
      */
     protected $requiredExtensions = [
-        'Page' => [
-            'GalleryExtension'
+        Page::class => [
+            GalleryExtension::class
         ]
     ];
 
@@ -57,5 +63,4 @@ class GalleryExtensionTest extends SapphireTest
             $this->assertTrue(isset($obj->url));
         }
     }
-
 }
