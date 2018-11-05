@@ -104,7 +104,7 @@ class GalleryExtension extends DataExtension
                     'caption' => $item->Caption
                         ? $item->Caption
                         : $item->Image()->Title,
-                    'thumbnail' => $item->Image()->CroppedImage(480, 375)->AbsoluteLink(),
+                    'thumbnail' => $item->Image()->Fill(480, 375)->AbsoluteLink(),
                     'thumbnailCaption' => $item->Caption
                         ? $item->dbObject('Caption')->LimitCharacters($captionLength)
                         : $item->Image()->dbObject('Title')->LimitCharacters($captionLength),

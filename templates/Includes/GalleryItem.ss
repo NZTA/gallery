@@ -1,6 +1,6 @@
 <div class="gallery__item">
     <% if $Image %>
-        $Image.CroppedImage(480,375)
+        $Image.Fill(480,375)
     <% end_if %>
     <p class="gallery__item-caption">
         <% if $Caption %>

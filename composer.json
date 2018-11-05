@@ -23,7 +23,8 @@
     "extra": {
         "expose": [
             "css",
-            "js"
+            "js",
+            "icons"
         ]
     },
     "prefer-stable": true,
