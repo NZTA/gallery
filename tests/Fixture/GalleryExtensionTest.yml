@@ -1,0 +1,27 @@
+NZTA\Gallery\Test\Fixture\GalleryTestPage:
+  noItems:
+    IsActive: true
+  noImages:
+    IsActive: true
+  inactive:
+  mix:
+    IsActive: true
+SilverStripe\Assets\Image:
+  image:
+    Title: This is a image Title
+    FileFilename: image.png
+    FileHash: bd7e4e99ea192bfc9d86b6f4dbfff8ebadfca4bf
+    Name: image.png
+NZTA\Gallery\Model\GalleryItem:
+  noImage:
+    Caption: 'No image'
+    Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.noImages
+  noImageMix:
+    Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.mix
+  image:
+    Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.inactive
+    Image: =>SilverStripe\Assets\Image.image
+  imageMix:
+    Caption: 'a caption'
+    Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.mix
+    Image: =>SilverStripe\Assets\Image.image

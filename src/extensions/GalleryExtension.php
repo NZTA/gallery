@@ -97,7 +97,7 @@ class GalleryExtension extends DataExtension
             $hasImage = ($item->ImageID != 0 && $item->Image()->exists());
 
             if ($hasImage) {
-                $captionLength = Config::inst()->get(GalleryExtension::class, 'thumbnail_caption_length');
+                $captionLength = Config::inst()->get(self::class, 'thumbnail_caption_length');
 
                 $data[] = [
                     'id' => $item->ID,

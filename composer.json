@@ -26,6 +26,12 @@
             "icons"
         ]
     },
+    "autoload": {
+        "psr-4": {
+            "NZTA\\Gallery\\": "src",
+            "NZTA\\Gallery\\Test": "tests"
+        }
+    },
     "prefer-stable": true,
     "minimum-stability": "dev"
 }

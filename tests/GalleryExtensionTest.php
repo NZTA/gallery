@@ -2,65 +2,73 @@
 
 namespace NZTA\Gallery\Test;
 
-use SilverStripe\Dev\SapphireTest;
 use NZTA\Gallery\Extensions\GalleryExtension;
-use Page;
 use NZTA\Gallery\Model\GalleryItem;
+use NZTA\Gallery\Test\Fixture\GalleryTestPage;
+use SilverStripe\Assets\Dev\TestAssetStore;
+use SilverStripe\Assets\Image;
+use SilverStripe\Dev\SapphireTest;
 
 class GalleryExtensionTest extends SapphireTest
 {
-    /**
-     * @var boolean
-     */
+    protected static $fixture_file = './Fixture/GalleryExtensionTest.yml';
+
     protected $usesDatabase = true;
 
-    /**
-     * @var array
-     */
-    protected $requiredExtensions = [
-        Page::class => [
-            GalleryExtension::class
-        ]
+    protected static $extra_dataobjects = [GalleryTestPage::class];
+
+    protected static $required_extensions = [
+        GalleryTestPage::class => [GalleryExtension::class],
     ];
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        TestAssetStore::activate('galleryAssets');
+        $image = $this->objFromFixture(Image::class, 'image');
+        $sourcePath = __DIR__ . '/Fixture/assets/' . $image->Name;
+        $image->setFromLocalFile($sourcePath, $image->Filename);
+        $image->publishSingle();
+    }
+
+    protected function tearDown(): void
+    {
+        TestAssetStore::reset();
+        parent::tearDown();
+    }
+
+    public function testGalleryDataIsJson()
+    {
+        $page = $this->objFromFixture(GalleryTestPage::class, 'noItems');
+        $result = json_decode($page->getGalleryData());
+        $this->assertTrue(is_array($result));
+    }
+
+    public function testOnlyItemsWithImagesAreIncluded()
+    {
+        $page = $this->objFromFixture(GalleryTestPage::class, 'noImages');
+        $result = json_decode($page->getGalleryData());
+        $this->assertEmpty($result);
+    }
+
+    public function testInactivePagesHaveNoItems()
+    {
+        $page = $this->objFromFixture(GalleryTestPage::class, 'inactive');
+        $result = json_decode($page->getGalleryData());
+        $this->assertEmpty($result);
+    }
 
     public function testGetGalleryData()
     {
-        $page = new Page();
-        $page->Title = 'Gallery Test Page';
-        $page->write();
-
+        $page = $this->objFromFixture(GalleryTestPage::class, 'mix');
         $result = json_decode($page->getGalleryData());
-
-        // ensure data is a json array
-        $this->assertTrue(is_array($result));
-        $this->assertEquals(0, count($result));
-
-        $page->IsActive = true;
-
-        $result = json_decode($page->getGalleryData());
-
-        // ensure we still have no data since have no gallery items yet
-        $this->assertTrue(is_array($result));
-        $this->assertEquals(0, count($result));
-
-        // attach gallery item to the page
-        $item = new GalleryItem();
-        $item->Caption = 'Test Image';
-        $item->write();
-
-        $page->GalleryItems()->add($item);
-
-        $result = json_decode($page->getGalleryData());
-
-        // assert we have data now
-        $this->assertEquals(1, count($result));
+        $this->assertCount(1, $result, 'json has the wrong count');
 
         // check the expected data exists for each item
-        foreach ($result as $obj) {
-            $this->assertTrue(isset($obj->id));
-            $this->assertTrue(isset($obj->caption));
-            $this->assertTrue(isset($obj->thumbnail));
-            $this->assertTrue(isset($obj->url));
-        }
+        $obj = $result[0];
+        $this->assertTrue(isset($obj->id), 'ID should be set');
+        $this->assertTrue(isset($obj->caption), 'Caption should be set');
+        $this->assertTrue(isset($obj->thumbnail), 'Thumbnail should exist');
+        $this->assertTrue(isset($obj->url), 'URL should exist');
     }
 }

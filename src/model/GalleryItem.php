@@ -23,7 +23,7 @@ class GalleryItem extends DataObject
     /**
      * @var string
      */
-    private static $plural_name = 'Gallery item';
+    private static $plural_name = 'Gallery items';
 
     /**
      * @var string
@@ -81,7 +81,7 @@ class GalleryItem extends DataObject
         $fields->push(
             TextField::create('Caption', 'Caption')
                 ->setDescription(
-                    "(Optional) A short description of the image's content, limited to 35 characters. 
+                    "(Optional) A short description of the image's content, limited to 35 characters.
                     If not supplied, the image's title will be used"
                 )
                 ->setAttribute(
