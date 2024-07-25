@@ -14,9 +14,11 @@
         "issues": "https://github.com/NZTA/gallery/issues"
     },
     "require": {
-        "silverstripe/cms": "^4 || ^5"
+        "silverstripe/cms": "^4 || ^5",
+        "symbiote/silverstripe-gridfieldextensions": "^3 || ^4"
     },
     "require-dev": {
+        "slevomat/coding-standard": "^8",
         "phpunit/phpunit": "^9"
     },
     "extra": {
@@ -29,9 +31,16 @@
     "autoload": {
         "psr-4": {
             "NZTA\\Gallery\\": "src",
-            "NZTA\\Gallery\\Test": "tests"
+            "NZTA\\Gallery\\Test\\": "tests"
         }
     },
     "prefer-stable": true,
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": false
+        }
+    }
 }

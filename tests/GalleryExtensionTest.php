@@ -3,7 +3,6 @@
 namespace NZTA\Gallery\Test;
 
 use NZTA\Gallery\Extensions\GalleryExtension;
-use NZTA\Gallery\Model\GalleryItem;
 use NZTA\Gallery\Test\Fixture\GalleryTestPage;
 use SilverStripe\Assets\Dev\TestAssetStore;
 use SilverStripe\Assets\Image;

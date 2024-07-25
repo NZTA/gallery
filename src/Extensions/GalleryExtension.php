@@ -2,6 +2,7 @@
 
 namespace NZTA\Gallery\Extensions;
 
+use NZTA\Gallery\Model\GalleryItem;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
@@ -10,11 +11,9 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use NZTA\Gallery\Model\GalleryItem;
 
 class GalleryExtension extends DataExtension
 {
-
     /**
      * Defines the character limit that the thumbnail captions are set to.
      *
@@ -27,14 +26,14 @@ class GalleryExtension extends DataExtension
      */
     private static $db = [
         'GalleryHeading' => 'Varchar(255)',
-        'IsActive'       => 'Boolean'
+        'IsActive'       => 'Boolean',
     ];
 
     /**
      * @var array
      */
     private static $has_many = [
-        'GalleryItems' => GalleryItem::class
+        'GalleryItems' => GalleryItem::class,
     ];
 
     /**
@@ -64,10 +63,9 @@ class GalleryExtension extends DataExtension
                         'GalleryItems',
                         'Gallery Items',
                         $this->owner->GalleryItems()->sort('SortOrder'),
-                        GridFieldConfig_RecordEditor::create()
-                            ->addComponent(new GridFieldOrderableRows('SortOrder'))
+                        GridFieldConfig_RecordEditor::create()->addComponent(new GridFieldOrderableRows('SortOrder'))
                     )
-                    ->setDescription('This is the list of Gallery Items to be displayed on the page')
+                    ->setDescription('This is the list of Gallery Items to be displayed on the page'),
                 ]
             );
         }
@@ -108,7 +106,7 @@ class GalleryExtension extends DataExtension
                     'thumbnailCaption' => $item->Caption
                         ? $item->dbObject('Caption')->LimitCharacters($captionLength)
                         : $item->Image()->dbObject('Title')->LimitCharacters($captionLength),
-                    'url' => $item->Image()->AbsoluteLink()
+                    'url' => $item->Image()->AbsoluteLink(),
                 ];
             }
         }

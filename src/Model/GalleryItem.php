@@ -2,12 +2,12 @@
 
 namespace NZTA\Gallery\Model;
 
+use Page;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataObject;
-use Page;
 
 /**
  * A GalleryItem consists an image with an attached caption that can
@@ -36,7 +36,7 @@ class GalleryItem extends DataObject
      */
     private static $db = [
         'Caption'   => 'Varchar(255)',
-        'SortOrder' => 'Int'
+        'SortOrder' => 'Int',
     ];
 
     /**
@@ -44,7 +44,7 @@ class GalleryItem extends DataObject
      */
     private static $has_one = [
         'Image' => Image::class,
-        'Page'  => Page::class
+        'Page'  => Page::class,
     ];
 
     /**
@@ -59,7 +59,7 @@ class GalleryItem extends DataObject
      */
     private static $summary_fields = [
         'Image.CMSThumbnail' => 'Image',
-        'Caption'            => 'Image Title/Caption'
+        'Caption'            => 'Image Title/Caption',
     ];
 
     /**
