@@ -3,18 +3,14 @@
 Provides the ability add a Gallery to any number of page types to provide a gallery of images with captions
 
 ## Requirements
-SilverStripe 4.x
 
-## Version info
-The master branch of this module is currently aiming for SilverStripe 4.x compatibility
-
-* [SilverStripe 3.0+ compatible version](https://github.com/NZTA/gallery/tree/1.0.0)
+SilverStripe 4.x or 5.x
 
 ## Features
 
-* Able to create a set of GalleryItems that each consist of an image and a caption
-* Define which PageTypes these GalleryItems should be added to through extensions configurations
-* When a galleryitem is clicked on, a lightbox popup shows with carousel functionality
+-   Able to create a set of GalleryItems that each consist of an image and a caption
+-   Define which PageTypes these GalleryItems should be added to through extensions configurations
+-   When a galleryitem is clicked on, a lightbox popup shows with carousel functionality
 
 ## Installation
 
@@ -22,7 +18,7 @@ The master branch of this module is currently aiming for SilverStripe 4.x compat
 
 ### Installing assets
 
-You will need to require in the `Requirements::javascript('nzta/gallery: js/gallery.js')` in order to display the gallery out of the box and 
+You will need to require in the `Requirements::javascript('nzta/gallery: js/gallery.js')` in order to display the gallery out of the box and
 have the lightbox functionality.
 
 There is also a `Requirements::css('nzta/gallery: css/main.css)` file that can be used to display basic styles for the `CarouselModal`.

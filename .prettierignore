@@ -1,0 +1,5 @@
+# 'dist' folders (minified output)
+js/
+css/
+# composer autogenreates these files. Leave it be.
+composer.*

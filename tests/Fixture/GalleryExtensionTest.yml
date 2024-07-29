@@ -14,7 +14,7 @@ SilverStripe\Assets\Image:
     Name: image.png
 NZTA\Gallery\Model\GalleryItem:
   noImage:
-    Caption: 'No image'
+    Caption: "No image"
     Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.noImages
   noImageMix:
     Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.mix
@@ -22,6 +22,6 @@ NZTA\Gallery\Model\GalleryItem:
     Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.inactive
     Image: =>SilverStripe\Assets\Image.image
   imageMix:
-    Caption: 'a caption'
+    Caption: "a caption"
     Page: =>NZTA\Gallery\Test\Fixture\GalleryTestPage.mix
     Image: =>SilverStripe\Assets\Image.image
