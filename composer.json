@@ -30,7 +30,11 @@
     },
     "autoload": {
         "psr-4": {
-            "NZTA\\Gallery\\": "src",
+            "NZTA\\Gallery\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "NZTA\\Gallery\\Test\\": "tests"
         }
     },
